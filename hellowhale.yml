@@ -30,6 +30,7 @@ metadata:
   labels:
     app: hello-whale-app
 spec:
+  type: LoadBalancer
   selector:
     app: hello-whale-app
     version: blue
@@ -37,4 +38,4 @@ spec:
   - nodePort: 31113
     port: 80
     targetPort: 80
-  type: LoadBalancer
+---
