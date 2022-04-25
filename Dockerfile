@@ -15,8 +15,10 @@ RUN apt-get upgrade -y
 
 # Download and install wkhtmltopdf
 RUN apt-get install -y build-essential xorg libssl-dev libxrender-dev wget gdebi
-RUN wget http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
-RUN gdebi --n wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
+#RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb
+#RUN gdebi --n wkhtmltox-0.12.6-1_linux-trusty-amd64.deb
+RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+RUN sudo apt install ./wkhtmltox_0.12.6-1.bionic_amd64.deb
 ENTRYPOINT ["wkhtmltopdf"]
 
 # Show the extended help
