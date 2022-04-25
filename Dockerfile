@@ -15,8 +15,8 @@ RUN apt-get update \
         libxtst6 \
         xz-utils
 
-RUN curl "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb" -L -o "wkhtmltopdf.tar.gz"
-RUN tar -xvf wkhtmltopdf.tar.gz
+RUN curl "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb" -L -o "wkhtmltopdf.tar.xz"
+RUN tar -xf wkhtmltopdf.tar.xz
 RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 
 ENTRYPOINT ["wkhtmltopdf"]
