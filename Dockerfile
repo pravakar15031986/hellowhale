@@ -5,26 +5,24 @@ COPY wrapper.sh /
 COPY html /usr/share/nginx/html
 
 CMD ["./wrapper.sh"]
-FROM centos:6
-RUN yum install -y \
-    gzip \
-    diffutils \
-    fontconfig-devel \
-    freetype-devel \
-    gcc \
-    gcc-c++ \
-    libX11-devel \
-    libXext-devel \
-    libXrender-devel \
-    libjpeg-devel \
-    libpng-devel \
-    make \
-    openssl-devel \
-    perl \
-    zlib-devel \
-    && yum clean all
+FROM ubuntu:16.04
+# Install dependencies
+RUN apt-get install -y libfontconfig \
+    zlib1g \
+    libfreetype6 \
+    libxrender1 \
+    libxext6 \
+    libx11-6
 
-RUN curl "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos6.x86_64.rpm"
+# TEMPORARY FIX! SEE: https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3001
+RUN apt-get install -y libssl1.0.0=1.0.2g-1ubuntu4.8
+RUN apt-get install -y libssl-dev=1.0.2g-1ubuntu4.8
+
+# Download, extract and move binary in place
+RUN curl -L -o wkhtmltopdf.tar.xz https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+CMD tar -xf wkhtmltopdf.tar.xz
+CMD mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+chmod +x /usr/local/bin/wkhtmltopdf
 #RUN tar -xf wkhtmltopdf.tar.xz
 #RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 
