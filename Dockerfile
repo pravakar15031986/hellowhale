@@ -1,6 +1,12 @@
 FROM centos:7
 # Install dependencies
 RUN yum update -y
+RUN yum install -y \
+        curl \
+        libxrender1 \
+        libfontconfig \
+        libxtst6 \
+        xz-utils
 RUN yum install -y wget
 # TEMPORARY FIX! SEE: https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3001
 #RUN apt-get install -y libssl1.0.0=1.0.2g-1ubuntu4.8
