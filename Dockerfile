@@ -10,7 +10,7 @@ RUN yum install -y \
         xorg-x11-fonts-Type1 \
         libX11 \
         libXext \
-        libxrender \
+        libXrender \
         libjpeg \
         libpng \
         libfontconfig \
