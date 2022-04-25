@@ -3,9 +3,14 @@ FROM centos:7
 RUN yum update -y
 RUN yum install -y \
         curl \
+        fontconfig \
+        freetype \
+        openssl \
+        xorg-x11-fonts-75dpi \
+        xorg-x11-fonts-Type1 \
         libX11 \
         libXext \
-        libxrender1 \
+        libxrender \
         libjpeg \
         libpng \
         libfontconfig \
