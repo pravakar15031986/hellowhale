@@ -5,19 +5,28 @@ COPY wrapper.sh /
 COPY html /usr/share/nginx/html
 
 CMD ["./wrapper.sh"]
-FROM ubuntu:18.04
+FROM centos:6
+RUN yum install -y \
+    gzip \
+    diffutils \
+    fontconfig-devel \
+    freetype-devel \
+    gcc \
+    gcc-c++ \
+    libX11-devel \
+    libXext-devel \
+    libXrender-devel \
+    libjpeg-devel \
+    libpng-devel \
+    make \
+    openssl-devel \
+    perl \
+    zlib-devel \
+    && yum clean all
 
-RUN apt-get update \
-    && apt-get install -y \
-        curl \
-        libxrender1 \
-        libfontconfig \
-        libxtst6 \
-        xz-utils
-
-RUN curl "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb" -L -o "wkhtmltopdf.tar.xz"
-RUN tar -xf wkhtmltopdf.tar.xz
-RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+RUN curl "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos6.x86_64.rpm"
+#RUN tar -xf wkhtmltopdf.tar.xz
+#RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 
 ENTRYPOINT ["wkhtmltopdf"]
 #FROM openjdk:8-jre-alpine
