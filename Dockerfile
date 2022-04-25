@@ -7,6 +7,7 @@ COPY html /usr/share/nginx/html
 CMD ["./wrapper.sh"]
 FROM ubuntu:16.04
 # Install dependencies
+RUN apt-get update -y
 RUN apt-get install -y libfontconfig \
     zlib1g \
     libfreetype6 \
