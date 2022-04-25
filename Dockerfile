@@ -1,19 +1,19 @@
-FROM ubuntu:16.04
+FROM centos:7
 # Install dependencies
-RUN apt-get update -y
-RUN apt-get install -y libfontconfig \
+RUN yum update -y
+RUN yum install -y libfontconfig \
     zlib1g \
     libfreetype6 \
     libxrender1 \
     libxext6 \
     libx11-6
-RUN apt-get install -y wget
+RUN yum install -y wget
 # TEMPORARY FIX! SEE: https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3001
 #RUN apt-get install -y libssl1.0.0=1.0.2g-1ubuntu4.8
 #RUN apt-get install -y libssl-dev=1.0.2g-1ubuntu4.8
 
 # Download, extract and move binary in place
-RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.xenial_amd64.deb
+RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 #RUN tar -xf wkhtmltopdf.tar.xz
 #RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 #RUN chmod +x /usr/local/bin/wkhtmltopdf
