@@ -16,7 +16,7 @@ RUN apt-get update \
         xz-utils
 
 RUN curl "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb" -L -o "wkhtmltopdf.tar.xz"
-RUN tar Jxvf wkhtmltopdf.tar.xz
+RUN tar -xvf wkhtmltopdf.tar.xz
 RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 
 ENTRYPOINT ["wkhtmltopdf"]
