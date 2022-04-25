@@ -16,7 +16,7 @@ RUN apt-get install -y libfontconfig \
     libx11-6
 
 # TEMPORARY FIX! SEE: https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3001
-RUN apt-get install -y libssl1.0.0=1.0.2g-1ubuntu4.8
+#RUN apt-get install -y libssl1.0.0=1.0.2g-1ubuntu4.8
 RUN apt-get install -y libssl-dev=1.0.2g-1ubuntu4.8
 
 # Download, extract and move binary in place
