@@ -3,7 +3,11 @@ FROM centos:7
 RUN yum update -y
 RUN yum install -y \
         curl \
+        libX11 \
+        libXext \
         libxrender1 \
+        libjpeg \
+        libpng \
         libfontconfig \
         libxtst6 \
         xz-utils
