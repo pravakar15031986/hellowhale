@@ -22,8 +22,12 @@ RUN yum install -y wget
 #RUN apt-get install -y libssl-dev=1.0.2g-1ubuntu4.8
 
 # Download, extract and move binary in place
-RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
-RUN rpm -ivh wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+#RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
+RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+RUN rpm -Uvh wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+RUN tar -xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+RUN mv wkhtmltox/bin/* /usr/local/bin/
+#RUN rpm -ivh wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 #RUN tar -xf wkhtmltopdf.tar.xz
 #RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 #RUN chmod +x /usr/local/bin/wkhtmltopdf
