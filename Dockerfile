@@ -23,9 +23,9 @@ RUN yum install -y wget
 
 # Download, extract and move binary in place
 #RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
-RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-RUN rpm -Uvh wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-RUN tar -xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.6-1/wkhtmltox-0.12.6-1_linux-generic-amd64.tar.xz
+RUN rpm -Uvh wkhtmltox-0.12.6-1_linux-generic-amd64.tar.xz
+RUN tar -xvf wkhtmltox-0.12.6-1_linux-generic-amd64.tar.xz
 RUN mv wkhtmltox/bin/* /usr/local/bin/
 #RUN rpm -ivh wkhtmltox-0.12.6-1.centos7.x86_64.rpm
 #RUN tar -xf wkhtmltopdf.tar.xz
