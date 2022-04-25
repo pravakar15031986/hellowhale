@@ -1,10 +1,9 @@
 FROM nginx
+RUN wget https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.xenial_amd64.deb -P /var/www
+RUN dpkg --configure -a
+RUN apt-get install -y xvfb libfontconfig fontconfig libpng16-16 libxrender1 xfonts-75dpi build-essential xorg
+RUN dpkg -i /var/www/wkhtmltox_0.12.5-1.xenial_amd64.deb
 RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y build-essential xorg libssl-dev libxrender-dev wget gdebi
-RUN wget http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
-RUN gdebi --n wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
-ENTRYPOINT ["/usr/share/ngnix/wkhtmltopdf"]
 COPY wrapper.sh /
 
 COPY html /usr/share/nginx/html
