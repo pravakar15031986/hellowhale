@@ -1,10 +1,3 @@
-FROM nginx
-# Download and install wkhtmltopdf dependencies.
-COPY wrapper.sh /
-
-COPY html /usr/share/nginx/html
-
-CMD ["./wrapper.sh"]
 FROM ubuntu:16.04
 # Install dependencies
 RUN apt-get update -y
@@ -37,3 +30,10 @@ ENTRYPOINT ["wkhtmltopdf"]
 
 #ENTRYPOINT ["wkhtmltopdf"]
 
+FROM nginx
+# Download and install wkhtmltopdf dependencies.
+COPY wrapper.sh /
+
+COPY html /usr/share/nginx/html
+
+CMD ["./wrapper.sh"]
