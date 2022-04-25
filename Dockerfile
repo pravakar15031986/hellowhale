@@ -6,14 +6,18 @@ COPY html /usr/share/nginx/html
 
 CMD ["./wrapper.sh"]
 
-FROM php:${PHP_VERSION}-fpm-alpine AS sylius_php
+FROM ubuntu:14.04
+MAINTAINER Pravakar
 
-# persistent / runtime deps
-RUN apk add --no-cache \
-        wkhtmltopdf \
-        xvfb \
-        ttf-dejavu ttf-droid ttf-freefont ttf-liberation \
-    ;
+RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get upgrade -y
 
-RUN ln -s /usr/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf;
-RUN chmod +x /usr/local/bin/wkhtmltopdf;
+# Download and install wkhtmltopdf
+RUN apt-get install -y build-essential xorg libssl-dev libxrender-dev wget gdebi
+RUN wget http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
+RUN gdebi --n wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
+ENTRYPOINT ["wkhtmltopdf"]
+
+# Show the extended help
+CMD ["-h"]
