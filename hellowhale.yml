@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: hello-blue-whale
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: hello-whale-app
@@ -35,6 +35,6 @@ spec:
     version: blue
   type: NodePort
   ports:
-  - nodePort: 31113
+  - nodePort: 30001
     port: 80
     targetPort: 80
