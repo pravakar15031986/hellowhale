@@ -30,7 +30,7 @@ metadata:
   labels:
     app: hello-whale-app
 spec:
-  type: Loadbalancer
+  type: LoadBalancer
   selector:
     app: hello-whale-app
     version: blue
