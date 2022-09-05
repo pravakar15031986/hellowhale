@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: hello-whale-container
-        image: docker.io/prabhu1986/master:latest
+        image: docker.io/prabhu1986/hellowhale1:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
